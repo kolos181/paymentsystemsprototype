@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Testing online payment Systems</title>
+
+</head>
+<body>
+<form action="https://www.portmone.com.ua/gateway/" method="post">
+    <input type="hidden" name="payee_id" value="1185"/>
+    <input type="hidden" name="shop_order_number"
+           value="76575j65465464161hhhh"/>
+    <input type="hidden" name="bill_amount" value="1"/>
+    <input type="hidden" name="description" value="Описание заказа"/>
+    <input type="hidden" name="success_url"
+           value="http://example.com/success.html"/>
+    <input type="hidden" name="failure_url"
+           value="http://example.com/failure.html"/>
+    <input type="hidden" name="lang" value="ru"/>
+    <input type="hidden" name="encoding" value="UTF-8"/>
+    <input type="hidden" name="exp_time" value="400"/>
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>
