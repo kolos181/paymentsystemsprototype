@@ -1,0 +1,14 @@
+security:
+  oauth2:
+    client:
+      clientId: 213540251471-4q36dvsmdr35eqq2aovi6rlumqh5n0sl.apps.googleusercontent.com
+      clientSecret: 0vw3ePkCcz3MfW03oa3x2S3F
+      accessTokenUri: https://www.googleapis.com/oauth2/v3/token
+      userAuthorizationUri: https://accounts.google.com/o/oauth2/auth
+      tokenName: oauth_token
+      authenticationScheme: query
+      clientAuthenticationScheme: form
+      scope: profile
+    resource:
+      userInfoUri: https://www.googleapis.com/userinfo/v2/me
+      preferTokenInfo: false
