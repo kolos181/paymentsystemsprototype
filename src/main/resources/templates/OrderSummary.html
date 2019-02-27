@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order summary</title>
+</head>
+<body>
+<form action="https://www.portmone.com.ua/gateway/" method="post">
+    <input type="hidden" name="payee_id" value="1185" />
+    <input id="shopOrderNumber" type="hidden" name="shop_order_number"
+           value="" />
+    <input type="hidden" name="bill_amount" value="1"/>
+    <input id="orderDescription" type="hidden" name="description" value=""/>
+    <input type="hidden" name="success_url"
+           value="/success" />
+    <input type="hidden" name="failure_url"
+           value="/failure" />
+    <input type="hidden" name="lang" value="ru" />
+    <input type="hidden" name="encoding" value= "UTF-8" />
+    <input type="hidden" name="exp_time" value= "400" />
+    <button type="submit">Submit order</button>
+</form>
+<script>
+
+    setShopOrderNumber();
+    setOrderDescription();
+
+    function setShopOrderNumber(){
+        console.log(getCookie("productOrder"));
+        document.getElementById("shopOrderNumber").setAttribute("value", getCookie("productOrder"));
+    }
+
+    function setOrderDescription() {
+        console.log(getCookie("userName"));
+        document.getElementById("orderDescription").setAttribute("value", getCookie("userName"));
+    }
+
+    function getCookie(name) {
+        var value = "; " + document.cookie;
+        var parts = value.split("; " + name + "=");
+        if (parts.length == 2) return parts.pop().split(";").shift();
+    }
+</script>
+</body>
+</html>

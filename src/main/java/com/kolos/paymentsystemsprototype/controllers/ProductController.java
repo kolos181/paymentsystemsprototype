@@ -2,10 +2,12 @@ package com.kolos.paymentsystemsprototype.controllers;
 
 import com.kolos.paymentsystemsprototype.entity.Product;
 import com.kolos.paymentsystemsprototype.services.ProductService;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
-@RequestMapping("/product")
+@Controller
+@RequestMapping("/products")
 public class ProductController {
 
     private final ProductService productService;
@@ -22,6 +24,12 @@ public class ProductController {
     @GetMapping("/{id}")
     public Product getProduct(@PathVariable(value = "id") Long id){
         return productService.getOne(id);
+    }
+
+    @GetMapping
+    public String getProducts(Model model) {
+        model.addAttribute("products", this.productService.findAll());
+        return "products";
     }
 
     @PutMapping

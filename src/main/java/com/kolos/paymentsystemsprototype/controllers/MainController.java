@@ -1,16 +1,28 @@
 package com.kolos.paymentsystemsprototype.controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class MainController {
 
-    @RequestMapping("/")
-    public String showMainPage(Model model){
+    @RequestMapping("/login")
+    public String showMainPage() {
+        return "login";
+    }
 
-        model.addAttribute("foo", "Barabashka");
-        return "index";
+    @RequestMapping("/order")
+    public String showOrderPage() {
+        return "OrderSummary";
+    }
+
+    @RequestMapping("/success")
+    public String successfulOrder() {
+        return "success";
+    }
+
+    @RequestMapping("/failure")
+    public String faultyOrder() {
+       return "failure";
     }
 }

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+</head>
+<body>
+<h1>Choose a product:</h1>
+<div th:each="product: ${products}">
+    <img id="productImage" th:src="${product.image}" alt="">
+    <p id="productName" th:attrappend="id=${product.id}" th:text="${product.name}"></p>
+    <p id="productDescr" th:text="${product.description}"></p>
+    <button class="orderBtn" id="order" th:attrappend="id=${product.id}">Buy</button>
+</div>
+<script>
+    var triggers = document.querySelectorAll('.orderBtn');
+
+    triggers.forEach(function (elem) {
+        elem.addEventListener("click", function () {
+            setCookie("productOrder", elem.getAttribute('id'));
+            window.location.href="/order"
+        });
+    });
+
+    function setCookie(productName, inputValue) {
+        document.cookie = productName+"="+inputValue+";";
+    }
+
+    function getCookie(name) {
+        var value = "; " + document.cookie;
+        var parts = value.split("; " + name + "=");
+        if (parts.length == 2) return parts.pop().split(";").shift();
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login page</title>
+</head>
+<body>
+<h1>Login</h1>
+<input id="loginInput" type="text">
+<button id="loginButton">Login</button>
+
+<script>
+    var trigger = document.getElementById("loginButton");
+
+    trigger.addEventListener("click",
+        function () {
+            var input = document.getElementById("loginInput");
+            setCookie("userName", input.value)
+            window.location.href = "/products";
+        }, false)
+
+    function setCookie(userName, inputValue) {
+        document.cookie = userName+"="+inputValue+";";
+    }
+</script>
+</body>
+</html>
