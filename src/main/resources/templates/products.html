@@ -2,15 +2,28 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+          crossorigin="anonymous">
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+            integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+            crossorigin="anonymous"></script>
+
     <title>Products</title>
 </head>
 <body>
 <h1>Choose a product:</h1>
-<div th:each="product: ${products}">
-    <img id="productImage" th:src="${product.image}" alt="">
-    <p id="productName" th:attrappend="id=${product.id}" th:text="${product.name}"></p>
-    <p id="productDescr" th:text="${product.description}"></p>
-    <button class="orderBtn" id="order" th:attrappend="id=${product.id}">Buy</button>
+<div th:each="product: ${products}" class="card">
+    <div>
+        <div class="list-group-item">
+            <img id="productImage" th:src="${product.image}" alt="">
+            <p id="productName" th:attrappend="id=${product.id}" th:text="${product.name}"></p>
+            <p id="productDescr" th:text="${product.description}"></p>
+            <button class="orderBtn btn btn-success" id="order" th:attrappend="id=${product.id}">Buy</button>
+        </div>
+    </div>
 </div>
 <script>
     var triggers = document.querySelectorAll('.orderBtn');
@@ -18,12 +31,12 @@
     triggers.forEach(function (elem) {
         elem.addEventListener("click", function () {
             setCookie("productOrder", elem.getAttribute('id'));
-            window.location.href="/order"
+            window.location.href = "/order"
         });
     });
 
     function setCookie(productName, inputValue) {
-        document.cookie = productName+"="+inputValue+";";
+        document.cookie = productName + "=" + inputValue + ";";
     }
 
     function getCookie(name) {
